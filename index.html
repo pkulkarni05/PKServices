@@ -6,10 +6,37 @@
     <meta name="description" content="Freelancer Services Website">
     <title>Freelance Services by Prakash Kulkarni</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Basic styling for the "Back to Top" button */
+        .back-to-top {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 70px; /* Adjusted to be above the footer */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Offset by half of its width */
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background-color: #0056b3;
+        }
+
+        /* Optional smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>Welcome to PK Services</h1>
+        <h1 id="top">Welcome to PK Services</h1>
         <nav>
             <ul>
                 <li><a href="#about">About Me</a></li>
@@ -27,39 +54,38 @@
             Aside from my career in IT, I’ve always had a passion for cooking, which began in my childhood. While studying in Sydney, I worked in restaurants and at the Sydney Convention Center as a bar and wait staff. These experiences helped me develop my culinary skills, and over the past few years, I’ve enjoyed preparing meals for the local community.
             
             I am also deeply committed to education, particularly in helping children and adults improve their English. Since moving to the Czech Republic, I’ve noticed the limited access to English language education. Both my children are bilingual, and I’ve seen how this gives them an edge. This inspired me to tutor kids in English, as well as provide mentorship and career guidance to young adults. I also offer conversational English sessions for adults who feel they’ve lost some of their fluency due to a lack of regular exposure.
-            
-            </p>
+        </p>
     </section>
+
     <section id="services">
         <h2>Services I Provide</h2>
         
-        <h3>IT Consulting & Management (Extensive experience and university quaification in the field)</h3>
+        <h3>IT Consulting & Management</h3>
         <ul>
-            <li>IT Infrastructure management and support</li>
-            <li>Implementing and managing IT operations </li>
-            <li>Digital Transformation
+            <li>Designing IT services infrastructure</li>
+            <li>Implementing and managing IT operations</li>
             <li>Cloud services and solutions</li>
-            <li>Service desk design, Implementation and management</li>
+            <li>Service desk design and management</li>
             <li>Creating simplistic websites</li>
-            <li>Automation of repetative and mundane tasks (Python script, Excel Macro, etc)</li>
-       </ul>
-       <h4>Customer Reviews</h4>
-       <p>[Placeholder for customer reviews related to IT leadership and services]</p>
-
-       <h3>Catering Services (Pure passion and interest driven)</h3>
-       <p>I offer catering services for small gatherings, parties, or events for up to 12-14 people. Whether you're hosting a dinner or a special event, I will provide delicious meals tailored to your preferences.</p>
-       <h4>Customer Reviews</h4>
-       <p>[Placeholder for customer reviews related to catering services]</p>
+            <li>Automation of repetitive and mundane tasks</li>
+        </ul>
+        <h4>Customer Reviews</h4>
+        <p>[Placeholder for customer reviews related to IT leadership and services]</p>
        
-       <h3>English Tutoring for Kids (Passion for teaching and contributing towards development of young talent)</h3>
-       <p>I provide English language tutoring for children aged 8 through high school, focusing on grammar, reading comprehension, and writing skills.</p>
-       <h4>Customer Reviews</h4>
-       <p>[Placeholder for customer reviews related to tutoring services]</p>
+        <h3>Catering Services</h3>
+        <p>I offer catering services for small gatherings, parties, or events for up to 12-14 people. Whether you're hosting a dinner or a special event, I will provide delicious meals tailored to your preferences.</p>
+        <h4>Customer Reviews</h4>
+        <p>[Placeholder for customer reviews related to catering services]</p>
 
-       <h3>English Conversation for Adults (Assisting career development and personal interest of individuals)</h3>
-       <p>If you're an adult looking to improve your English speaking skills, I offer personalized conversation sessions to enhance fluency and confidence.</p>
-       <h4>Customer Reviews</h4>
-       <p>[Placeholder for customer reviews related to English conversation sessions]</p>
+        <h3>English Tutoring for Kids</h3>
+        <p>I provide English language tutoring for children aged 8 through high school, focusing on grammar, reading comprehension, and writing skills.</p>
+        <h4>Customer Reviews</h4>
+        <p>[Placeholder for customer reviews related to tutoring services]</p>
+
+        <h3>English Conversation for Adults</h3>
+        <p>If you're an adult looking to improve your English speaking skills, I offer personalized conversation sessions to enhance fluency and confidence.</p>
+        <h4>Customer Reviews</h4>
+        <p>[Placeholder for customer reviews related to English conversation sessions]</p>
     </section>
 
     <section id="portfolio">
@@ -74,7 +100,7 @@
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+        <form action="mailto:kulkarni.prakash@gmail.com" method="post" enctype="text/plain">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -90,8 +116,27 @@
         <p>Address: Menin 456, Menin, Czech Republic 66457</p>
     </section>
 
+    <!-- Back to Top Button -->
+    <a href="#top" class="back-to-top" id="backToTopBtn">Back to Top</a>
+
     <footer>
         <p>&copy; 2024 Prakash Kulkarni. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for showing the "Back to Top" button -->
+    <script>
+        // Get the button
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // Show or hide the button based on scroll position
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+    </script>
+
 </body>
 </html>
