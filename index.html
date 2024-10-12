@@ -12,9 +12,9 @@
         .back-to-top {
             display: none; /* Hidden by default */
             position: fixed;
-            bottom: 70px; /* Adjusted to be above the footer */
-            left: 50%; /* Center horizontally */
-            transform: translateX(-50%); /* Offset by half of its width */
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
@@ -30,6 +30,17 @@
         /* Optional smooth scrolling */
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Styling to avoid the "Back to Top" button overlapping the footer */
+        footer {
+            padding-bottom: 60px; /* Adjust this padding based on your page design */
+        }
+         /* Form styling to ensure each field appears on its own line */
+         form label, form input, form textarea, form select {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
         }
     </style>
 </head>
@@ -54,7 +65,7 @@
             Aside from my career in IT, I’ve always had a passion for cooking, which began in my childhood. While studying in Sydney, I worked in restaurants and at the Sydney Convention Center as a bar and wait staff. These experiences helped me develop my culinary skills, and over the past few years, I’ve enjoyed preparing meals for the local community.
             
             I am also deeply committed to education, particularly in helping children and adults improve their English. Since moving to the Czech Republic, I’ve noticed the limited access to English language education. Both my children are bilingual, and I’ve seen how this gives them an edge. This inspired me to tutor kids in English, as well as provide mentorship and career guidance to young adults. I also offer conversational English sessions for adults who feel they’ve lost some of their fluency due to a lack of regular exposure.
-        </p>
+            </p>
     </section>
 
     <section id="services">
@@ -70,22 +81,22 @@
             <li>Automation of repetitive and mundane tasks</li>
         </ul>
         <h4>Customer Reviews</h4>
-        <p>[Placeholder for customer reviews related to IT leadership and services]</p>
+       <p>[Placeholder for customer reviews related to IT leadership and services]</p>
        
         <h3>Catering Services</h3>
         <p>I offer catering services for small gatherings, parties, or events for up to 12-14 people. Whether you're hosting a dinner or a special event, I will provide delicious meals tailored to your preferences.</p>
         <h4>Customer Reviews</h4>
-        <p>[Placeholder for customer reviews related to catering services]</p>
+       <p>[Placeholder for customer reviews related to catering services]</p>
 
         <h3>English Tutoring for Kids</h3>
         <p>I provide English language tutoring for children aged 8 through high school, focusing on grammar, reading comprehension, and writing skills.</p>
         <h4>Customer Reviews</h4>
-        <p>[Placeholder for customer reviews related to tutoring services]</p>
+       <p>[Placeholder for customer reviews related to tutoring services]</p>
 
         <h3>English Conversation for Adults</h3>
         <p>If you're an adult looking to improve your English speaking skills, I offer personalized conversation sessions to enhance fluency and confidence.</p>
         <h4>Customer Reviews</h4>
-        <p>[Placeholder for customer reviews related to English conversation sessions]</p>
+       <p>[Placeholder for customer reviews related to English conversation sessions]</p>
     </section>
 
     <section id="portfolio">
@@ -100,18 +111,28 @@
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <form action="mailto:kulkarni.prakash@gmail.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label>
+        <form id="contactForm">
+            <label for="name">First Name and Last Name:</label>
             <input type="text" id="name" name="name" required>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
+
+            <label for="service">Select a Service:</label>
+            <select id="service" name="service" required>
+                <option value="">--Please choose an option--</option>
+                <option value="IT Consulting & Management">IT Consulting & Management</option>
+                <option value="Catering Services">Catering Services</option>
+                <option value="English Tutoring for Kids">English Tutoring for Kids</option>
+                <option value="English Conversation for Adults">English Conversation for Adults</option>
+            </select>
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
 
             <button type="submit">Send</button>
         </form>
+        <p id="responseMessage"></p> <!-- This is where the success or error message will appear -->
         <p>Phone: +420775432436</p>
         <p>Address: Menin 456, Menin, Czech Republic 66457</p>
     </section>
@@ -136,6 +157,33 @@
                 backToTopBtn.style.display = "none";
             }
         };
+    </script>
+
+    <!-- JavaScript for form submission using Fetch API -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const response = await fetch('https://formspree.io/f/mvgoogpb', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            const responseMessage = document.getElementById('responseMessage');
+
+            if (response.ok) {
+                responseMessage.textContent = "Thank you for your message! I'll get back to you soon.";
+                form.reset();
+            } else {
+                responseMessage.textContent = "There was a problem with your submission. Please try again.";
+            }
+        });
     </script>
 
 </body>
