@@ -8,6 +8,37 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        /* Styling for form fields */
+        form {
+            max-width: 600px; /* Limits the form width */
+            margin: 0 auto; /* Centers the form horizontally */
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%; /* Makes input fields take up the full width of the form container */
+            max-width: 100%; /* Prevents overflowing */
+            padding: 10px; /* Adds padding inside the fields */
+            margin-bottom: 15px; /* Adds space between form fields */
+            border: 2px solid #ccc; /* Border around each field */
+            border-radius: 5px; /* Rounded corners for fields */
+            font-size: 16px; /* Font size for text inside fields */
+            box-sizing: border-box; /* Ensures padding is included in the element’s total width */
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+            border-color: #007bff; /* Change border color on focus */
+            outline: none; /* Removes default outline on focus */
+        }
+
+        textarea {
+            resize: vertical; /* Allows vertical resizing of the textarea */
+            height: 100px; /* Default height for textarea */
+        }
+
         /* Basic styling for the "Back to Top" button */
         .back-to-top {
             display: none; /* Hidden by default */
@@ -111,28 +142,32 @@
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <form id="contactForm">
+        <form action="https://formspree.io/f/mvgoogpb" method="POST">
+            <!-- First Name and Last Name -->
             <label for="name">First Name and Last Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <!-- Email Address -->
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
 
+            <!-- Dropdown for Services -->
             <label for="service">Select a Service:</label>
             <select id="service" name="service" required>
-                <option value="">--Please choose an option--</option>
-                <option value="IT Consulting & Management">IT Consulting & Management</option>
+                <option value="IT Consulting">IT Consulting</option>
                 <option value="Catering Services">Catering Services</option>
                 <option value="English Tutoring for Kids">English Tutoring for Kids</option>
                 <option value="English Conversation for Adults">English Conversation for Adults</option>
             </select>
 
+            <!-- Message -->
             <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
 
+            <!-- Submit Button -->
             <button type="submit">Send</button>
         </form>
-        <p id="responseMessage"></p> <!-- This is where the success or error message will appear -->
+
         <p>Phone: +420775432436</p>
         <p>Address: Menin 456, Menin, Czech Republic 66457</p>
     </section>
